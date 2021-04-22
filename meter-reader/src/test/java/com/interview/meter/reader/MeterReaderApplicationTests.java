@@ -1,4 +1,4 @@
-package com.interview.meterreader;
+package com.interview.meter.reader;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,4 +1,4 @@
-package com.interview.meterreader;
+package com.interview.meter.reader;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
