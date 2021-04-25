@@ -14,7 +14,7 @@ public class ReadingController {
 
     @GetMapping(value = "/ping/{firstname}")
     public String ping(@PathVariable("firstname") String firstname) {
-        ClientDto clientDto = clientService.getClient(firstname);
+        ClientDto clientDto = clientService.test(firstname);
         return clientDto.toString();
     }
 }

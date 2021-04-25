@@ -9,11 +9,11 @@ import java.time.LocalDateTime;
 @Data
 public class ReadingDto {
 
-    private Long id;
     private int year;
     private double level;
     private Month month;
     private Status status;
     private LocalDateTime createdOn;
     private LocalDateTime updatedOn;
+    private MeterDto meterDto;
 }

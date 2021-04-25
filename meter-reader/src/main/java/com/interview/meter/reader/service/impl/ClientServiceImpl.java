@@ -16,7 +16,7 @@ public class ClientServiceImpl implements ClientService {
     private final MRConversionService conversionService;
 
     @Override
-    public ClientDto getClient(String firstname) {
+    public ClientDto test(String firstname) {
         ClientEntity clientEntity = clientRepository.findFirstByFirstName(firstname);
         return conversionService.convert(clientEntity, ClientDto.class);
     }

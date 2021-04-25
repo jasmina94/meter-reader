@@ -1,4 +1,4 @@
-package com.interview.meter.reader.conversion.entity.to.dto;
+package com.interview.meter.reader.conversion.dto.to.entity;
 
 import com.interview.meter.reader.conversion.MRConverter;
 import com.interview.meter.reader.domain.AddressEntity;
@@ -6,20 +6,20 @@ import com.interview.meter.reader.dto.AddressDto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AddressEntityToDtoConverter extends MRConverter<AddressEntity, AddressDto> {
+public class AddressDtoToEntityConverter extends MRConverter<AddressDto, AddressEntity> {
 
     @Override
-    public AddressDto convert(AddressEntity source) {
-        var dto = new AddressDto();
-        map(source, dto);
-        return dto;
+    public AddressEntity convert(AddressDto source) {
+        var entity = new AddressEntity();
+        map(source, entity);
+        return entity;
     }
 
     @Override
-    public void map(AddressEntity sourceObject, AddressDto targetObject) {
+    public void map(AddressDto sourceObject, AddressEntity targetObject) {
         targetObject.setCity(sourceObject.getCity());
         targetObject.setLand(sourceObject.getLand());
-        targetObject.setZip(sourceObject.getZipCode());
+        targetObject.setZipCode(sourceObject.getZip());
         targetObject.setStreet(sourceObject.getStreet());
         targetObject.setAdditionalAddress(sourceObject.getAdditionalAddress());
     }

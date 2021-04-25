@@ -4,5 +4,5 @@ import com.interview.meter.reader.dto.ClientDto;
 
 public interface ClientService {
 
-    ClientDto getClient(String firstname);
+    ClientDto test(String firstname);
 }

@@ -17,11 +17,10 @@ public class ClientEntityToDtoConverter extends MRConverter<ClientEntity, Client
     }
 
     @Override
-    public void map(ClientEntity source, ClientDto dto) {
-        dto.setId(source.getId());
-        dto.setFirstName(source.getFirstName());
-        dto.setLastName(source.getLastName());
-        dto.setAddressDto(conversionService.convert(source.getAddressEntity(), AddressDto.class));
+    public void map(ClientEntity sourceObject, ClientDto targetObject) {
+        targetObject.setLastName(sourceObject.getLastName());
+        targetObject.setFirstName(sourceObject.getFirstName());
+        targetObject.setAddressDto(conversionService.convert(sourceObject.getAddressEntity(), AddressDto.class));
     }
 
 }

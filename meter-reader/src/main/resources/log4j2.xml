@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="file-system-path">/MeterReader</Property>
+        <Property name="log-path">${file-system-path}/log</Property>
+        <Property name="archive">${log-path}/archive</Property>
+        <Property name="LOG_PATTERN">%d{dd MMM yyyy HH:mm:ss,SSS} %X{traceId} %X{spanId} %-4r %-5p %c %x %m%n</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console-Adapter" target="SYSTEM_OUT">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+        </Console>
+        <RollingFile name="DefaultLogFile-Appender"
+                     fileName="${log-path}/meter-reader.log"
+                     filePattern="${archive}/%d{yyyy-MM-dd}.meter-reader-%i.log.zip"
+                     append="true" immediateFlush="true">
+            <PatternLayout pattern="${LOG_PATTERN}"/>
+            <Policies>
+                <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
+            </Policies>
+            <DefaultRolloverStrategy max="60"/>
+        </RollingFile>
+    </Appenders>
+    <Loggers>
+        <Logger name="org.hibernate" level="WARN">
+            <AppenderRef ref="Console-Adapter"/>
+            <AppenderRef ref="DefaultLogFile-Appender"/>
+        </Logger>
+        <Logger name="org.hibernate.sql" level="DEBUG">
+            <AppenderRef ref="Console-Adapter"/>
+            <AppenderRef ref="DefaultLogFile-Appender"/>
+        </Logger>
+        <Root level="INFO">
+            <AppenderRef ref="Console-Adapter"/>
+            <AppenderRef ref="DefaultLogFile-Appender"/>
+        </Root>
+    </Loggers>
+</Configuration>
